@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf8") as fh:
 
 setuptools.setup(
     name="basicpy2captcha",
-    version="1.0.1",
+    version="1.0.2",
     author="xWorthless",
     author_email="xworthlesscode@gmail.com",
     description="A basic python 2captcha.com module",

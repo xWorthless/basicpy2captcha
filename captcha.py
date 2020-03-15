@@ -25,7 +25,7 @@ class py2c():
             else:
                 raise Exception
         except Exception as e:
-            print("[py2captcha] > Failed getting balance. [{}]".format(e))
+            print("[basicpy2captcha] > Failed getting balance. [{}]".format(e))
             return False
 
     def reportIncorrect(self):
@@ -37,9 +37,9 @@ class py2c():
         }
         r = requests.get(self.URL_GET, params=payload).json()
         if r['status'] == 1:
-            print("[py2captcha] > Sucessfully reported Incorrect resolve.")
+            print("[basicpy2captcha] > Sucessfully reported Incorrect resolve.")
         else:
-            print("[py2captcha] > Failed reporting Incorrect. [{}]".format(r['request']))
+            print("[basicpy2captcha] > Failed reporting Incorrect. [{}]".format(r['request']))
             return False
 
     def reportCorrect(self):
@@ -51,9 +51,9 @@ class py2c():
         }
         r = requests.get(self.URL_GET, params=payload).json()
         if r['status'] == 1:
-            print("[py2captcha] > Sucessfully reported Correct resolve.")
+            print("[basicpy2captcha] > Sucessfully reported Correct resolve.")
         else:
-            print("[py2captcha] > Failed reporting Correct. [{}]".format(r['request']))
+            print("[basicpy2captcha] > Failed reporting Correct. [{}]".format(r['request']))
             return False
 
     def checkResolve(self):
@@ -67,7 +67,7 @@ class py2c():
             r = requests.get(self.URL_GET, params=payload).json()
             while r['status'] != 1:
                 if r['request'] != "CAPCHA_NOT_READY":
-                    print("[py2captcha] > Failed getting Resolve. [{}]".format(r['request']))
+                    print("[basicpy2captcha] > Failed getting Resolve. [{}]".format(r['request']))
                     return False
                 time.sleep(5)
                 r = requests.get(self.URL_GET, params=payload).json()
@@ -87,7 +87,7 @@ class py2c():
             time.sleep(5)
             return self.checkResolve()
         else:
-            print("[py2captcha] > Failed sending solve request. [{}]".format(r['request']))
+            print("[basicpy2captcha] > Failed sending solve request. [{}]".format(r['request']))
             return False
 
     def solveReCaptcha(self,key,url):
@@ -105,5 +105,5 @@ class py2c():
             time.sleep(15)
             return self.checkResolve()
         else:
-            print("[py2captcha] > Failed sending solve request. [{}]".format(r['request']))
+            print("[basicpy2captcha] > Failed sending solve request. [{}]".format(r['request']))
             return False
